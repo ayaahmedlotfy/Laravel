@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+// to use controller
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,71 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/posts', function () {
+//  Route::get('/posts',[PostController::class, "index"] );
 
-    $posts=[
-        [
-"id"=>1,
-"name"=>"aya",
-"body"=>"body post of aya",
-"title"=> "title post of aya"
-    ],
-    [
-        "id"=>2,
-        "name"=>"ali",
-        "body"=>"body post of ali",
-        "title"=> "title post of ali"
-    ],
-    [
-        "id"=>3,
-        "name"=>"hana",
-        "body"=>"body post of hana",
-        "title"=> "title post of hana"
-    ]
-];
-    return view('posts.index',["posts"=>$posts]);
+//  Route::get('/posts/create',[PostController::class, "create"] );
+//  Route::post('/posts',[PostController::class, "store"] );
 
-});
+//  Route::get('/posts/{id}',[PostController::class, "show"] );
 
-Route::get('/show/{id}', function ($id) {
+//  Route::get('/posts/{id}/edit',[PostController::class, "edit"] );
+//  Route::patch('/posts/{id}',[PostController::class, "update"] );
 
-    $post=[
-"id"=>$id,
-"name"=>"aya",
-"body"=>"body post of aya",
-"title"=> "title post of aya"];
-    return view('posts.show', $post);
-})->where('id','[0-9]+');
+//  Route::delete('/posts/{id}',[PostController::class, "destroy"] );
 
-// edit in form when click on edit go to /update
-Route::get('/edit/{id}', function ($id) {
 
-    $post=[
-"id"=>$id,
-"name"=>"aya",
-"body"=>"body post of aya",
-"title"=> "title post of aya"];
-    return view('posts.edit', $post);
-})->where('id','[0-9]+');
-
-// when edit go to update path
-Route::post('/update', function () {
-    return "UPDATED";
-});
-
-Route::get('/create', function () {
-    return view('posts.create');
-});
-
-Route::post('/store', function () {
-    return "STORED";
-});
-
-Route::get('/delete/{id}', function ($id)  {
-    return "DELETED";
-})->where('id','[0-9]+');
-
+Route::resource('posts',PostController::class);

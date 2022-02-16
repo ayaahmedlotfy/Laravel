@@ -10,16 +10,9 @@
   </head>
   <body>
       <!-- when make edit got to update page -->
-  <form  method="post" action="/update" >
+  <form  action="/posts/{{$id}}"  method="post"  >
       @csrf
-  <label for="id">ID :</label>
-        <input
-          type="text"
-          name="id"
-          id="id"
-          value="{{$id}}"
-        />
-        <br /><br />
+      @method("PATCH")
 
         <label for="name">name :</label>
         <input

@@ -8,15 +8,8 @@
   </head>
   <body>
       <!-- when make new post go to store page -->
-  <form  method="post" action="/store" >
+  <form  method="post" action="/posts" >
       @csrf
-  <label for="id">ID :</label>
-        <input
-          type="text"
-          name="id"
-          id="id"
-        />
-        <br /><br />
 
         <label for="name">name :</label>
         <input
