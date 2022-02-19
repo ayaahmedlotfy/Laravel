@@ -12,6 +12,9 @@
 <table>
     <tr>
         <th>ID</th>
+        <th>User Name</th>
+        <th>User Email</th>
+
         <th>Name</th>
         <th>Body</th>
         <th>Title</th>
@@ -28,12 +31,18 @@
 @foreach( $posts as $post)
 <tr>
 
-<td>{{$post["id"]}}</td>
-<td>{{$post["name"]}}</td>
-<td>{{$post["body"]}}</td>
-<td>{{$post["title"]}}</td>
-<td>{{$post["created_at"]}}</td>
-<td>{{$post["updated_at"]}}</td>
+<td>{{$post->id}}</td>
+
+<!-- to get from user name as we make inner join -->
+<td>{{$post->user->name}}</td>
+
+<!-- to get from user email as we make inner join -->
+<td>{{$post->user->email}}</td>
+<td>{{$post->name}}</td>
+<td>{{$post->body}}</td>
+<td>{{$post->title}}</td>
+<td>{{$post->created_at}}</td>
+<td>{{$post->updated_at}}</td>
 
 
 

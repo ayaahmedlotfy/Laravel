@@ -9,4 +9,11 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = ['name' , 'body' ,'title'];
+
+    // instead of join make relation
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

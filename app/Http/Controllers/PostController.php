@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 // to make controller take data from model as view need it from db
 use App\Models\Post;
 
+// to use customized error
+use App\Http\Requests\StorePostRequest;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -36,14 +39,27 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+
+    //  use StorePostRequest from its path in the topp of page to use customized error which i make
+    public function store(StorePostRequest $request)
     {
-        Post::create(["name"=>$request->name,
-        "body"=>$request->body,
-        "title"=>$request->title
+        $post=new Post;
+        $post->name=$request->name;
+        $post->title=$request->title;
+        $post->body=$request->body;
+        $post->user_id=5;
+        $post->save();
 
 
-]);
+
+//         Post::create(["name"=>$request->name,
+//         "body"=>$request->body,
+//         "title"=>$request->title,
+//         "user_id"=>2
+
+
+// ]);
 return redirect('/posts');
     }
 
@@ -78,7 +94,7 @@ return redirect('/posts');
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostRequest $request, $id)
     {
         $post=Post::find($id);
         $post->name=$request->name;

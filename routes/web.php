@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-// to use controller
+// to use PostController
 use App\Http\Controllers\PostController;
+
+// to use UserController
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +31,11 @@ use App\Http\Controllers\PostController;
 //  Route::patch('/posts/{id}',[PostController::class, "update"] );
 
 //  Route::delete('/posts/{id}',[PostController::class, "destroy"] );
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::resource('posts',PostController::class);
+ Route::get('/users/create',[UserController::class, "create"] );
+ Route::post('/users',[UserController::class, "store"] );
+
