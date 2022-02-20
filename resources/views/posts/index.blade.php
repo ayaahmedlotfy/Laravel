@@ -1,14 +1,5 @@
-<html>
-    <head>
-    <style>
-        table, th, td {
-  border: 1px solid black;
-}
-    tr:nth-child(even) {background: #CCC}
-    tr:nth-child(odd) {background: #FFF}
-</style>
-    </head>
-<body>
+@extends("site_layouts.app")
+@section("content")
 <table>
     <tr>
         <th>ID</th>
@@ -61,5 +52,4 @@
 
 <a href="/posts/create">Add New Post</a>
 
-</body>
-</html>
+@endsection

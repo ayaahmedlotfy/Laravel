@@ -8,6 +8,8 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 
 use Illuminate\Http\Request;
+// to use auth after install freez
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -48,7 +50,7 @@ class PostController extends Controller
         $post->name=$request->name;
         $post->title=$request->title;
         $post->body=$request->body;
-        $post->user_id=5;
+        $post->user_id=Auth::id();
         $post->save();
 
 
